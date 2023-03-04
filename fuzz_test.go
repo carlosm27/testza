@@ -9,7 +9,7 @@ import (
 	. "github.com/MarvinJWendt/testza"
 )
 
-//region FuzzUtil
+// region FuzzUtil
 
 func TestFuzzUtilMergeSets(t *testing.T) {
 	t.Run("String", func(t *testing.T) {
@@ -70,6 +70,10 @@ func TestFuzzUtilLimitSet(t *testing.T) {
 			AssertLen(t, FuzzUtilLimitSet(FuzzFloat64Full(), i), i)
 		})
 	}
+
+	t.Run(fmt.Sprintf("Max bigger than len (Limit=%d)", 10), func(t *testing.T) {
+		AssertLen(t, FuzzUtilLimitSet([]string{"a", "b", "c"}, 10), 3)
+	})
 }
 
 func TestFuzzUtilDistinctSet(t *testing.T) {
@@ -77,7 +81,7 @@ func TestFuzzUtilDistinctSet(t *testing.T) {
 	AssertEqual(t, FuzzUtilDistinctSet([]int{1, 2, 2, 1, 3}), []int{1, 2, 3})
 }
 
-//endregion
+// endregion
 
 // region FuzzString
 func TestFuzzStringGenerateRandom(t *testing.T) {
@@ -143,9 +147,9 @@ func TestFuzzStringUsernames(t *testing.T) {
 	AssertGreater(t, len(FuzzStringUsernames()), 0)
 }
 
-//endregion
+// endregion
 
-//region FuzzBool
+// region FuzzBool
 
 func TestFuzzBoolFull(t *testing.T) {
 	AssertEqual(t, []bool{true, false}, FuzzBoolFull())
@@ -158,7 +162,7 @@ func TestFuzzBoolRunTests(t *testing.T) {
 	})
 }
 
-//endregion
+// endregion
 
 // region FuzzInt
 func TestFuzzIntGenerateRandom(t *testing.T) {
@@ -185,7 +189,7 @@ func TestFuzzIntGenerateRandomRange(t *testing.T) {
 	}
 }
 
-//endregion
+// endregion
 
 // region FuzzFloat64
 func TestFuzzFloat64Full(t *testing.T) {
@@ -223,5 +227,3 @@ func TestFuzzFloat64GenerateRandomRange(t *testing.T) {
 		AssertLessOrEqual(t, generated, i*10+10)
 	}
 }
-
-//endregion

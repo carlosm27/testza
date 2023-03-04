@@ -8,7 +8,7 @@
 </a>
 
 <a href="https://codecov.io/gh/MarvinJWendt/testza" target="_blank">
-<img src="https://img.shields.io/github/workflow/status/MarvinJWendt/testza/Go?label=tests&style=flat-square" alt="Tests">
+<img src="https://img.shields.io/github/actions/workflow/status/MarvinJWendt/testza/go.yml?label=tests&style=flat-square" alt="Tests">
 </a>
 
 <a href="https://codecov.io/gh/MarvinJWendt/testza" target="_blank">
@@ -16,7 +16,7 @@
 </a>
 
 <a href="https://codecov.io/gh/MarvinJWendt/testza">
-<!-- unittestcount:start --><img src="https://img.shields.io/badge/Unit_Tests-2996-magenta?style=flat-square" alt="Unit test count"><!-- unittestcount:end -->
+<!-- unittestcount:start --><img src="https://img.shields.io/badge/Unit_Tests-2956-magenta?style=flat-square" alt="Unit test count"><!-- unittestcount:end -->
 </a>
   
 <a href="https://pkg.go.dev/github.com/MarvinJWendt/testza" target="_blank">
@@ -1467,7 +1467,7 @@ Example:
 func FuzzUtilLimitSet[setType any](testSet []setType, max int) []setType
 ```
 
-FuzzUtilLimitSet limits a test set in size.
+FuzzUtilLimitSet returns a random sample of a test set with a maximal size.
 
 Example:
 
@@ -1506,10 +1506,10 @@ Example:
 func FuzzUtilRunTests[setType any](t testRunner, testSet []setType, testFunc func(t *testing.T, index int, f setType))
 ```
 
-FuzzUtilRunTests runs a test for every value in a testset. You can use the
-value as input parameter for your functions, to sanity test against many
-different cases. This ensures that your functions have a correct error
-handling and enables you to test against hunderts of cases easily.
+FuzzUtilRunTests runs a test for every value in a test set. You can use
+the value as input parameter for your functions, to sanity test against
+many different cases. This ensures that your functions have a correct error
+handling and enables you to test against hundreds of cases easily.
 
 Example:
 
